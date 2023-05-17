@@ -14,10 +14,12 @@ const toMinJs = "public/minjs";
 const toMinCss = "public/mincss";
 
 function minjs() {
-  return gulp
-    .src([pathJs, pathNoJs, pathNoJs2])
-    // .pipe(uglify({ toplevel: false }))
-    .pipe(gulp.dest(toMinJs));
+  return (
+    gulp
+      .src([pathJs, pathNoJs, pathNoJs2])
+      // .pipe(uglify({ toplevel: false }))
+      .pipe(gulp.dest(toMinJs))
+  );
 }
 function mincss() {
   return gulp
@@ -43,12 +45,12 @@ const pathAppControllersHost = `../cg28577_test3_indy/App/Controllers`;
 const pathAppModels = `App/Models/*`;
 const pathAppModelsHost = `../cg28577_test3_indy/App/Models`;
 
-const pathTemplates = `Templates/*`;
-const pathTemplatesHost = `../cg28577_test3_indy/Templates`;
-const pathTemplatesComponents = `Templates/components/*`;
-const pathTemplatesComponentsHost = `../cg28577_test3_indy/Templates/components`;
-const pathTemplatesLayouts = `Templates/layouts/*`;
-const pathTemplatesLayoutsHost = `../cg28577_test3_indy/Templates/layouts`;
+const pathTemplates = `App/Templates/*`;
+const pathTemplatesHost = `../cg28577_test3_indy/App/Templates`;
+const pathTemplatesComponents = `App/Templates/components/*`;
+const pathTemplatesComponentsHost = `../cg28577_test3_indy/App/Templates/components`;
+const pathTemplatesLayouts = `App/Templates/layouts/*`;
+const pathTemplatesLayoutsHost = `../cg28577_test3_indy/App/Templates/layouts`;
 
 function app_host() {
   return gulp.src([pathApp]).pipe(gulp.dest(pathAppHost));
