@@ -1,0 +1,42 @@
+.section-utility {
+  display: flex;
+  padding: 3rem 0;
+}
+.section-utility-header {
+  padding: 4rem 4rem 4rem 0;
+  flex-basis: 30%;
+}
+.section-utility-header-title {
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  color: var(--color-primary);
+}
+.section-utility-header-description {
+  margin-bottom: 2rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: var(--font-family-primary);
+}
+.section-utility-header-link {
+  font-weight: 600;
+}
+
+.section-utility-list {
+  flex-basis: 70%;
+}
+.section-utility-item {
+  display: block;
+  font-family: var(--font-family-primary);
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+.section-utility-item:hover {
+  text-decoration: underline;
+}
+
+.section-utility-item h4 {
+  font-family: var(--font-family-primary);
+}
+.section-utility-item-description {
+  font-size: 0.8rem;
+}
