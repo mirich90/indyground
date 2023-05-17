@@ -1,1 +1,1 @@
-# php2-lessons
+# My project "Indyground"
