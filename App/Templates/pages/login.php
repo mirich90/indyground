@@ -14,8 +14,6 @@
       <input type="password" name="password" id="password" placeholder="Введите пароль" autocomplete="off" class="input">
     </div>
 
-
-
     <?php if (isset($_SESSION['error'])) : ?>
       <div class="alert status-error">
         <?= $_SESSION['error'];
