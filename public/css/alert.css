@@ -1,0 +1,25 @@
+.alert {
+  margin-bottom: 15px;
+  display: block;
+  padding: 10px 15px;
+  border-radius: var(--borderRadius);
+  font-weight: 500;
+  position: relative;
+  cursor: pointer;
+}
+.status-primary {
+  background: var(--primaryShade1);
+  color: var(--primaryShade4);
+}
+.status-info {
+  background: var(--accentShade1);
+  color: var(--accentShade4);
+}
+.status-success {
+  background: var(--accent2Shade1);
+  color: var(--accent2Shade4);
+}
+.status-error {
+  background: var(--accent3Shade1);
+  color: var(--accent3Shade4);
+}

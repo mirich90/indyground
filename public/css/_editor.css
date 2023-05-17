@@ -1,0 +1,16 @@
+#editor {
+  width: 95%;
+  margin: 1em auto;
+  max-width: var(--width-container);
+}
+#popup-article-info-img {
+  background-size: cover;
+  background-position: center;
+}
+#popup-article-info-img-input {
+  display: none;
+}
+#popup-article-info-img-menu {
+  display: none;
+  margin-top: -76px;
+}

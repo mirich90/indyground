@@ -1,0 +1,29 @@
+.ui-diagram {
+  background: var(--color-bg);
+  width: 2rem;
+  height: 2rem;
+  font-size: 0.8rem;
+  text-align: center;
+  border: 0.5rem solid #95cd8b;
+  border-right: 0.5rem solid #d0e6bb;
+  margin-right: 0.8rem;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+}
+.ui-diagram.ui-diagram-peach {
+  border-color: #fe5f50;
+  border-right-color: #f7c3be;
+}
+.ui-diagram.ui-diagram-cyan {
+  border-color: rgb(0, 133, 125);
+  border-right-color: rgb(117 187 183);
+}
+.ui-diagram.ui-diagram-violet {
+  border-color: rgb(131, 70, 146);
+  border-right-color: rgb(218, 191, 225);
+}
+
+.ui-diagram.ui-diagram-blue {
+  border-color: rgb(27, 69, 227);
+  border-right-color: rgb(121, 142, 217);
+}

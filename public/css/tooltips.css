@@ -1,0 +1,73 @@
+.tooltip {
+  cursor: pointer;
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+.tooltip.bottom:after {
+  top: 80%;
+  /* transition: opacity 0.3s ease 0.3s,
+    top 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s; */
+}
+.tooltip.dark:after {
+  background: var(--color-text-dark);
+  color: var(--color-light);
+}
+.tooltip:after {
+  content: attr(data-tooltip);
+  background: var(--color-neutral2);
+  max-width: 90%;
+  width: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  opacity: 0;
+  height: auto;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: var(--borderRadius);
+  color: var(--color-text);
+  text-align: center;
+  animation: enter 0.35s ease infinite alternate;
+}
+.tooltip.bottom:hover:after,
+.tooltip.bottom.hovered:after {
+  top: 130%;
+  opacity: 1;
+}
+.tooltip.bottom:after {
+  top: 80%;
+}
+.tooltip.bottom:before {
+  border-color: transparent transparent #000 transparent;
+  /* transition: opacity 0.3s ease 0.3s, */
+  /* top 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s; */
+}
+.tooltip:hover:before {
+  opacity: 1;
+}
+.tooltip::before {
+  content: "";
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  opacity: 0;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #000 transparent transparent transparent;
+  animation: enter 0.35s ease infinite alternate;
+}
+
+@keyframes enter {
+  from {
+    transform: translateY(2px);
+  }
+  to {
+    transform: translateY(-2px);
+  }
+}

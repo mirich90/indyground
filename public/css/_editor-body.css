@@ -1,0 +1,53 @@
+/* 
+---articles---
+id
+img
+title
+author
+category
+
+---bookmarks---
+id
+name_table
+article_id
+user
+state
+
+---likes---
+id
+name_table
+article_id
+user
+state
+
+
+---categories---
+id
+name
+
+---images---
+id
+src
+name
+
+---users---
+id
+name
+ava
+city
+
+
+articles.id
+articles.title
+categories.name где categories.id = articles.category
+images.src где images.id = articles.img
+images.name где images.id = articles.img
+images.name где images.id = articles.img
+users.name где users.id = articles.author
+users.ava где users.id = articles.author
+users.city где users.id = articles.author
+bookmarks.state где bookmarks.article_id = articles.id AND bookmarks.name_table = 'articles' AND bookmarks.user = 2
+likes.state где likes.article_id = articles.id AND likes.name_table = 'articles' AND likes.user = 2
+количество всех строк likes где likes.article_id = articles.id AND likes.state = 1 
+количество всех строк bookmarks где bookmarks.article_id = articles.id AND bookmarks.state = 1
+*/

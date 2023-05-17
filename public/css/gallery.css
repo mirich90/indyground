@@ -1,0 +1,30 @@
+.section-gallery {
+  background: var(--color-neutral1);
+  padding: 60px 0;
+}
+.section-gallery-list {
+  padding: 20px 0;
+}
+.section-gallery-header,
+.section-gallery-list {
+  display: flex;
+  justify-content: space-between;
+}
+.section-gallery-list__item {
+  margin: 0.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+}
+.section-gallery-list__item__text__title {
+  padding: 0.5rem 1rem;
+  background-color: var(--color-bg);
+  font-size: 0.8rem;
+}
+.section-gallery-list__item__image {
+  height: 192px;
+  overflow: hidden;
+}
+.section-gallery-list__item__image img {
+  height: 100%;
+}

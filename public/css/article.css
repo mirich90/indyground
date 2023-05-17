@@ -1,0 +1,97 @@
+.articles {
+  margin-top: 2rem;
+}
+.article {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  align-items: center;
+}
+article {
+  line-height: 1.7;
+}
+
+/* только в статье внутри */
+.description {
+  background: var(--color-primary-light);
+  padding: 2em;
+  /* font-family: var(--font-family-secondary); */
+}
+
+.content article h1,
+.content article h2,
+.content article h3,
+.content article h4 {
+  color: var(--color-text-dark);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin-top: 2rem;
+}
+h2 {
+  font-size: 2em;
+}
+h3 {
+  font-size: 1.6em;
+}
+h4 {
+  font-size: 1.2em;
+}
+h1 {
+  margin: 16px 0 20px;
+  letter-spacing: 0.04em;
+  font-size: 2.5em;
+  line-height: 1.1;
+}
+article figcaption {
+  font-style: italic;
+  font-size: 0.9rem;
+  /* font-family: var(--font-family-primary); */
+  font-weight: 600;
+}
+.dop-info {
+  display: flex;
+  margin-top: 1em;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.content article li,
+.content article > * {
+  margin-top: 1.4rem;
+}
+
+.info-action {
+  position: absolute;
+  top: 10px;
+  left: -190px;
+  width: 40px;
+  height: 100%;
+}
+.info-action-wrapper {
+  position: sticky;
+  top: 120px;
+}
+
+table {
+  margin: 1em 0;
+  width: 100%;
+  font-family: brandon-grotesque;
+  border-collapse: collapse;
+}
+th {
+  text-align: left;
+  font-family: brandon-grotesque;
+  background: var(--color-primary);
+  color: var(--color-light);
+  padding: 0.5em;
+  font-weight: 600;
+  border: solid 1px var(--color-text-light);
+}
+tr:nth-child(odd) {
+  background: var(--color-primary-light);
+}
+td {
+  border: solid 1px var(--color-text-light);
+  padding: 0.5em;
+}

@@ -1,0 +1,12 @@
+.component-picture {
+  height: 26px;
+  width: 26px;
+  margin-right: 0.5rem;
+}
+
+.component-picture > img {
+  border-radius: 100%;
+  max-width: 100%;
+  height: 100%;
+  display: block;
+}

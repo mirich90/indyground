@@ -1,0 +1,16 @@
+.row {
+  display: flex;
+  align-items: center;
+}
+.row-space {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapper-input + .wrapper-btn {
+  margin-top: 1.5rem;
+}
+.wrapper-input + .wrapper-btn {
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+}

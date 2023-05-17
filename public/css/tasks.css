@@ -1,0 +1,170 @@
+.dashboard {
+  font-family: "Roboto", sans-serif;
+  user-select: none;
+}
+
+.dashboard select {
+  padding: 0.4rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  text-align: end;
+  font-size: 0.7rem;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+.header h1 {
+  margin-bottom: 1rem;
+}
+.header-title {
+  width: 294px;
+  display: flex;
+  margin-bottom: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-title select {
+  margin-top: 3px;
+}
+
+.col-header {
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.item {
+  transition: 0.2s;
+  width: 290px;
+  box-shadow: 6px 6px 6px 6px rgba(198, 198, 198, 0.36);
+  border-radius: 10px;
+  background: #fff;
+  padding: 0;
+  color: #000;
+  cursor: grab;
+  margin-bottom: 0.6rem;
+  border: none;
+}
+
+.item:hover {
+  /* border: 3px dotted #c4cad3; */
+  box-shadow: 9px 9px 9px 9px rgb(198 198 198 / 36%);
+}
+.item:active {
+  cursor: grabbing;
+}
+.item-action {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #eff1f6;
+  padding: 0.5rem 1rem;
+}
+
+.item ul {
+  margin: 0;
+  padding-top: 0.5rem;
+}
+.item h3 {
+  font-family: var(--base-font);
+  font-size: 0.8rem;
+  margin: 0;
+  border-radius: 6px 6px 0 0;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  min-height: 2rem;
+}
+.item.critical h3 {
+  color: #ba5934;
+  background-color: #e9ccb9;
+}
+.item.blocker h3 {
+  color: #ba3434;
+  background-color: #f5dcdc;
+}
+.item.basic h3 {
+  color: #2e87ba;
+  background-color: #ceecfd;
+}
+.item.trivial h3 {
+  color: #13854e;
+  background-color: #d6ede2;
+}
+.item li {
+  display: flex;
+  align-items: flex-start;
+}
+.item li,
+.item h4 {
+  font-family: var(--base-font);
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+.item h4 {
+  padding: 0.5rem 1rem 0 1rem;
+  min-height: 1.5rem;
+}
+
+.item button {
+  background: #fff;
+  font-size: 0.7rem;
+  border: none;
+  color: #0ab3bb;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.item button:hover {
+  background-color: var(--color-neutral2);
+}
+
+.btn-new-subtask {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard .row {
+  align-items: start;
+}
+
+.dashboard select:hover {
+  background: #333;
+  color: #fff;
+}
+
+.placeholder {
+  width: 300px;
+  min-height: 300px;
+}
+
+.item h3:focus,
+.item h4:focus {
+  cursor: auto;
+}
+.add-task {
+  margin-bottom: 0.5rem;
+  width: 290px;
+  background: var(--color-bg);
+}
+
+.hide {
+  display: none;
+}
+
+.hovered {
+  /*   border-top: solid 5px #8ed7ed; */
+  background: #ebf0f7;
+  border-radius: 10px;
+}
+
+.item ul {
+  padding-right: 1rem;
+}
+.item label {
+  width: 100%;
+  min-height: 1rem;
+}
+.item input[type="checkbox"]:checked + label {
+  text-decoration: line-through;
+  color: rgba(0, 0, 0, 0.3);
+}

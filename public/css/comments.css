@@ -1,0 +1,44 @@
+.comments {
+  margin: 2rem 0;
+}
+.comment-info {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  font-size: 0.8rem;
+  align-items: center;
+  /* font-family: var(--font-family-secondary); */
+}
+.comment-info time {
+  font-size: 0.7rem;
+}
+.comment-action {
+  display: flex;
+  align-items: center;
+}
+#comments .comments-header {
+  font-size: 0.8rem;
+  color: var(--color-text-lighter);
+}
+#comments .comments-header p,
+#comments .comments-header ul,
+#comments .comments-header li {
+  display: inline-block;
+}
+#comments .comments-header li {
+  margin: 0 0.4rem;
+  cursor: pointer;
+}
+
+#comments .comments-header li:hover {
+  color: var(--color-text);
+  transition: 300ms;
+}
+.load-comments li.active {
+  color: var(--color-text);
+}
+#comment-form {
+  margin: 3em auto;
+  background-color: var(--color-neutral1);
+  padding: 1em 3em;
+}
