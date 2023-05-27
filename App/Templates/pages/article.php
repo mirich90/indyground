@@ -23,6 +23,7 @@ $this->setCss('highlighting');
     </div>
   </div>
 
+  <? $this->Component('plan'); ?>
   <? $this->Component('article_content'); ?>
 </div>
 

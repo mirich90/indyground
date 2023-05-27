@@ -28,6 +28,9 @@
   background-color: var(--color-neutral3);
   border: 8px solid var(--color-neutral3);
 }
+:target {
+  scroll-margin-top: calc(var(--nav-height) + 1rem);
+}
 html {
   scroll-behavior: smooth;
   height: 100%;

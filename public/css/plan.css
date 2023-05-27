@@ -1,0 +1,11 @@
+#article-plan {
+  padding: 0.6rem 0;
+  margin-top: 0.6rem;
+  border-top: 1px solid var(--color-neutral3);
+  border-bottom: 1px solid var(--color-neutral3);
+  cursor: pointer;
+}
+.article-plan-title {
+  font-size: 1rem;
+  font-family: var(--font-family-primary);
+}

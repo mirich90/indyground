@@ -1,51 +1,63 @@
+<?
+$is_ul = false;
+$num_subtitle = 1;
+?>
+
 <article>
-    <? $is_ul = false; ?>
-    <? foreach ($this->contents as $content) : ?>
-      <?php
-      if ($content['tag'] == 'li' && !$is_ul) {
-        $is_ul = true;
-        echo '<ul>';
-      } elseif ($is_ul && $content['tag'] != 'li') {
-        $is_ul = false;
-        echo '</ul>';
-      }
-      ?>
 
-      <? if ($content['tag'] == 'img') : ?>
-        <figure>
-          <img src="<?= $content['src'] ?>" alt="<?= $content['alt'] ?>">
-          <figcaption><?= $content['alt'] ?></figcaption>
-        </figure>
-        
-      <? elseif ($content['tag'] == 'table') : ?>
-        <table>
-          <caption><?=$content['alt'];?></caption>
+  <? foreach ($this->contents as $content) : ?>
+    <?php
+    if ($content['tag'] == 'li' && !$is_ul) {
+      $is_ul = true;
+      echo '<ul>';
+    } elseif ($is_ul && $content['tag'] != 'li') {
+      $is_ul = false;
+      echo '</ul>';
+    }
+    ?>
 
-          <tbody>
-          <? foreach (json_decode($content['html'],true) as $key => $html ) : ?>
+    <? if ($content['tag'] == 'img') : ?>
+      <figure>
+        <img src="<?= $content['src'] ?>" alt="<?= $content['alt'] ?>">
+        <figcaption><?= $content['alt'] ?></figcaption>
+      </figure>
+
+    <? elseif ($content['tag'] == 'h2') : ?>
+      <a href="#article-plan">
+        <h2 id="article-subtitle-<?= $num_subtitle++ ?>">
+          <?= $content['html'] ?>
+        </h2>
+      </a>
+
+
+    <? elseif ($content['tag'] == 'table') : ?>
+      <table>
+        <caption><?= $content['alt']; ?></caption>
+
+        <tbody>
+          <? foreach (json_decode($content['html'], true) as $key => $html) : ?>
             <tr>
-            <? foreach ($html as $td) : ?>
-              <? if ($key === 0) : ?>
-                <th><?=$td;?></th>
-              <? else : ?>
-                <td><?=$td;?></td>
-              <? endif ?>
+              <? foreach ($html as $td) : ?>
+                <? if ($key === 0) : ?>
+                  <th><?= $td; ?></th>
+                <? else : ?>
+                  <td><?= $td; ?></td>
+                <? endif ?>
 
-            <? endforeach ?>
+              <? endforeach ?>
             </tr>
           <? endforeach ?>
 
-          </tbody>
+        </tbody>
 
-        </table>
+      </table>
 
-      <? else : ?>
+    <? else : ?>
+      <<?= $content['tag'] ?>><?= $content['html'] ?></<?= $content['tag'] ?>>
 
-        <<?= $content['tag'] ?>><?= $content['html'] ?></<?= $content['tag'] ?>>
+    <? endif ?>
+  <? endforeach ?>
 
-      <? endif ?>
-    <? endforeach ?>
-
-    <hr>
-    <p style="text-align: center;">* * *</p>
-  </article>
+  <hr>
+  <p style="text-align: center;">* * *</p>
+</article>
