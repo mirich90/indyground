@@ -49,7 +49,6 @@ article h1 {
 article figcaption {
   font-style: italic;
   font-size: 0.9rem;
-  /* font-family: var(--font-family-primary); */
   font-weight: 600;
 }
 .dop-info {

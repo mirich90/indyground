@@ -11,8 +11,8 @@ $this->setCss('spoiler');
 
 <div id="article-plan" class="spoiler">
   <h2 class="article-plan-title">Содержание</h2>
-  <div class="spoiler-content">
 
+  <div class="spoiler-content">
     <ul>
 
       <? foreach ($this->contents as $key => $content) : ?>
