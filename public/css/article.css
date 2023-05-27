@@ -11,17 +11,15 @@ article {
   line-height: 1.7;
 }
 
-/* только в статье внутри */
 .description {
   background: var(--color-primary-light);
   padding: 2em;
-  /* font-family: var(--font-family-secondary); */
 }
 
-.content article h1,
-.content article h2,
-.content article h3,
-.content article h4 {
+#content article h1,
+#content article h2,
+#content article h3,
+#content article h4 {
   color: var(--color-text-dark);
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -58,11 +56,11 @@ article figcaption {
   font-size: 0.8rem;
 }
 
-.content article > * {
+#content article > * {
   margin-top: 1.4rem;
 }
 
-.content article li + li {
+#content article li + li {
   margin-top: 0.4rem;
 }
 
