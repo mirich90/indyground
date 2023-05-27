@@ -4,7 +4,7 @@ $this->setCss('navbar');
 ?>
 
 <nav class="nav menu">
-    <a href="#title" class="button-scroll-up">^</a>
+    <a href="#content" class="button-scroll-up">^</a>
     <a href="/" class="nav-logo">
         <span>blog_platform</span>
     </a>

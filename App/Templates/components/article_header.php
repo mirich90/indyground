@@ -3,7 +3,9 @@ $this->setCss('article_header');
 ?>
 
 <div class="container-u article">
+
     <?php $image = getImagePreview($this->article['image'], $this->article['image_type']); ?>
+
     <picture class="article-item article-picture">
         <source type="image/webp" srcset="/img/static/post_template.wepb" data-src="<?= $image[1]; ?>">
         <img src="/img/static/post_template.png" data-src="<?= $image[0]; ?>" alt="<?= $this->article['image'] ?>">
@@ -21,6 +23,7 @@ $this->setCss('article_header');
         </h1>
 
         <?php $image = ($this->article["ava"]) ? "avatars/" . $this->article["ava"] : 'static/ava.png'; ?>
+
         <a href="/profile/?username=<?= $this->article['username'] ?>" class="article-author">
             <picture>
                 <img src="/img/static/post_template.png" data-src="/img/<?= $image; ?>" alt="<?= $this->article['name'] ?>">
@@ -41,6 +44,7 @@ $this->setCss('article_header');
                     </li>
                 <? endforeach ?>
             </ul>
+
         </div>
     </div>
 </div>

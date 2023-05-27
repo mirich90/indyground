@@ -15,7 +15,7 @@ $this->setCss('style');
     <div class="preloader"></div>
   </div> -->
 
-  <section class="content">
+  <section id="content">
     <?= $this->content; ?>
   </section>
 
