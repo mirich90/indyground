@@ -50,10 +50,12 @@
   padding-left: 4px;
   content: " ▾";
 }
+.y-dropdown-menu li span,
 .menu ul li ul li {
   min-width: 190px;
 }
-.menu ul li ul li a {
+.menu ul li ul li a,
+.menu ul li ul li span {
   padding: 15px;
   line-height: 20px;
 }

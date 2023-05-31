@@ -2,10 +2,12 @@
 
 $for(".action", (e) => {
   $click(e, (event) => {
-    let id = e.dataset.id;
-    let table = e.dataset.table;
     let action = e.dataset.action;
-    add(e, id, table, action);
+    if (action) {
+      let id = e.dataset.id;
+      let table = e.dataset.table;
+      add(e, id, table, action);
+    }
   });
 });
 

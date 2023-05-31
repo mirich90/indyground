@@ -37,6 +37,17 @@ html {
   background: var(--color-bg);
   font-size: var(--base-font);
 }
+/* заготовка для темы */
+/* html::before {
+  content: "";
+  position: fixed;
+  inset: 0px;
+  z-index: 3;
+  mix-blend-mode: normal;
+  filter: opacity(50%);
+  pointer-events: none;
+  background: url(/img/static/noise.svg);
+} */
 body {
   display: flex;
   flex-direction: column;

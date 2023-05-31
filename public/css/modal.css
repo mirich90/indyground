@@ -40,9 +40,13 @@
 }
 
 .modal-head {
+  display: flex;
   height: 4rem;
   padding: 1rem;
   overflow: hidden;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-bg);
   background: var(--color-primary);
   cursor: pointer;
 }
@@ -54,7 +58,6 @@
   width: 2rem;
   height: 2rem;
   display: block;
-  float: right;
   margin-top: 4px;
 }
 

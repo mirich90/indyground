@@ -2,7 +2,7 @@ RewriteEngine On
 
 RewriteCond %{REQUEST_URI} !-f
 RewriteCond %{REQUEST_URI} !-d
-RewriteCond %{REQUEST_URI} !^.*\.(jpg|jpeg|css|js|gif|png|webp|woff2)$ [NC]
+RewriteCond %{REQUEST_URI} !^.*\.(jpg|jpeg|css|js|gif|png|webp|svg|woff2)$ [NC]
 RewriteRule ^(.*)$ index.php [QSA,L]
 
 Options -Indexes
