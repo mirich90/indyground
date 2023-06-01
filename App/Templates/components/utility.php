@@ -6,7 +6,7 @@ $this->setCss('utility');
     <div class="section-utility-header">
         <h2 class="section-utility-header-title">Утилиты</h2>
         <h3 class="section-utility-header-description">Программы, плагины, приложения для создания игр, графики, музыки</h3>
-        <a href="/" class="section-utility-header-link">Посмотреть все</a>
+        <a href="/utilities" class="section-utility-header-link">Посмотреть все</a>
     </div>
 
     <div class="section-utility-list">
@@ -37,7 +37,7 @@ $this->setCss('utility');
                 </a>
             </li>
             <li>
-                <a class="section-utility-item" href="/">
+                <a class="section-utility-item" href="/utilities">
                     <h4>Редактор карточек</h4>
                     <p class="section-utility-item-description">Программа для создания карточек, коллажей с возможностью экспорта в PNG и HTML</p>
                 </a>

@@ -196,7 +196,10 @@ class Article extends Controller
     $this->meta->description = $this->description();
     $this->meta->keywords = $this->keywords();
     $this->meta->author = $this->author();
-    $this->meta->image = getImagePreview($this->view->article['image'], $this->view->article['image_type'])[1];
+    $this->meta->image = getImagePreview(
+      $this->view->article['image'],
+      $this->view->article['image_type']
+    )[1];
     $this->view->meta = $this->meta;
   }
 
