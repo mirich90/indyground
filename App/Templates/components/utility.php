@@ -37,8 +37,8 @@ $this->setCss('utility');
                 </a>
             </li>
             <li>
-                <a class="section-utility-item" href="/utilities">
-                    <h4>Редактор карточек</h4>
+                <a class="section-utility-item" href="/generatorCard">
+                    <h4>Генератор карточек</h4>
                     <p class="section-utility-item-description">Программа для создания карточек, коллажей с возможностью экспорта в PNG и HTML</p>
                 </a>
             </li>

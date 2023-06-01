@@ -61,3 +61,6 @@ function $inEl(s) {
 function $inEls(s) {
   return $isStr(s) ? $$(s) : s;
 }
+function $create(tag = "div") {
+  return document.createElement(tag);
+}
