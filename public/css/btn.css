@@ -2,6 +2,9 @@
   display: flex;
   margin: 2rem 0;
 }
+.wrapper-btns.wrapper-btns-right {
+  justify-content: flex-end;
+}
 .wrapper-btns .wrapper-btn {
   margin-right: 0.4rem;
 }

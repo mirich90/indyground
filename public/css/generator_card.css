@@ -1,0 +1,47 @@
+/* #card-generator-content {
+  display: flex;
+}
+#card-generator-content > div {
+  flex-basis: 50%;
+} */
+#card-generator-preview-wrapper {
+  margin: 1rem;
+}
+#card-generator-preview-card {
+  background-image: url(/img/static/card_1.PNG);
+  filter: drop-shadow(2px 4px 6px black) brightness(0.8);
+  min-height: 300px;
+  padding: 50px;
+  border-radius: 16px;
+  color: #fff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+#card-generator-preview-card .wrapper-btns {
+  margin: 1rem 0 0 0;
+}
+#card-generator-preview-card .wrapper-btn {
+  margin-bottom: 0;
+}
+#card-generator-preview-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+#card-generator-preview-link {
+  color: var(--color-bg);
+  background-color: var(--color-text);
+}
+#card-generator-preview-link:hover {
+  background: none;
+}
+#card-generator-preview-title,
+#card-generator-preview-text,
+#card-generator-preview-link {
+  filter: drop-shadow(2px 4px 6px black);
+}

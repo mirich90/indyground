@@ -46,6 +46,6 @@ class GeneratorCard extends Controller
 
     protected function name_page()
     {
-        return "generator_card";
+        return "page_generator_card";
     }
 }

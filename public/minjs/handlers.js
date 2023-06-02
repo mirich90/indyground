@@ -41,6 +41,16 @@ function $change(e, func) {
     $inEl(e).addEventListener("change", func);
   }
 }
+function $keyup(e, func) {
+  if ($inEl(e)) {
+    $inEl(e).addEventListener("keyup", func);
+  }
+}
+function $keydown(e, func) {
+  if ($inEl(e)) {
+    $inEl(e).addEventListener("keydown", func);
+  }
+}
 function $onload(e, func) {
   $inEl(e).addEventListener("DOMContentLoaded", func);
 }
