@@ -3,6 +3,7 @@ footer {
   min-height: 15em;
   color: var(--color-bg-light);
   margin-top: 80px;
+  z-index: 0;
 }
 footer div.container {
   display: flex;
