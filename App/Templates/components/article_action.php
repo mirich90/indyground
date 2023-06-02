@@ -23,7 +23,7 @@
                 <i class="material-icons"> menu </i>
             </div>
             <ul class="nav-dropdown y-dropdown-menu" style="display: none;">
-                <li><span id="qrcode-btn" data-qrcode="<?= $_SERVER['HTTP_REFERER']; ?>article/?id=<?= $this->article['src']; ?>">QR-код</span></li>
+                <li><span id="qrcode-btn">QR-код</span></li>
                 <li><a href="/createPost/?id=<?= $this->article['src']; ?>">Редактировать</a></li>
                 <li><a href="index.php?complain=1&amp;id=2">Пожаловаться</a></li>
             </ul>
