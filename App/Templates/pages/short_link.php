@@ -1,30 +1,35 @@
 <?
 $this->setCss('input');
 $this->setCss('short_link');
+$this->setCss('qr_code');
+$this->setJs('qrcode.min');
 $this->setJs('shortLink');
 ?>
 
 <div id="shortlink">
+
     <div class="container">
         <h1> Создать короткую ссылку </h1>
 
         <div class="shortlink-form">
 
             <?= $this->ui('input', [
+                'id' => 'shortlink-title',
+                'label' => 'Название ссылки (обязательно)',
+                'placeholder' => "Введите название/описание ссылки",
+            ]); ?>
+
+            <?= $this->ui('input', [
                 'id' => 'shortlink-url',
-                'label' => 'Ссылка',
+                'label' => 'Ссылка (обязательно)',
                 'type' => 'url',
                 'placeholder' => "Введите ссылку",
             ]); ?>
 
-            <ul>
-                <li>Поле должно содержать минимум 13 символов</li>
-            </ul>
-
             <div class="row-space">
                 <?= $this->ui('input', [
                     'id' => 'shortlink-shortcode',
-                    'label' => 'Короткий адрес (если поле пустое, будет сгенерирован случайный код.)',
+                    'label' => 'Короткий адрес (если поле пустое, будет сгенерирован случайный код)',
                     'placeholder' => "Введите желаемый короткий адрес",
                 ]); ?>
 
@@ -33,8 +38,7 @@ $this->setJs('shortLink');
 
             <ul>
                 <li>Только английские символы, цифры и знак "-" (разделитель)</li>
-                <li>Первый символ всегда начинается с буквы, не с цифры</li>
-                <li>Длина от 4 символов включительно</li>
+                <li>Длина от 4 символов</li>
             </ul>
 
             <div class="wrapper-btns">

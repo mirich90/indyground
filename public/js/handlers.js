@@ -79,12 +79,30 @@ function $inEls(s) {
 function $create(tag = "div") {
   return document.createElement(tag);
 }
-function $error(text = "", html = "", title = "") {
-  const content = $(".modal-content");
-
-  content.innerHTML = html;
-  content.innerText = text;
+function $setContentMessage(html = "", title = "") {
+  $(".modal-content").innerHTML = html;
   $(".modal-title").innerText = title;
+}
+function $showMessage() {
+  $classDel($(".modal-head"), "modal-error");
   $classToggle($(".modal-wrapper"), "open");
+}
+function $showError() {
   $classAdd($(".modal-head"), "modal-error");
+  $classToggle($(".modal-wrapper"), "open");
+}
+function $message(html = "", title = "") {
+  $(".modal-content").innerHTML = html;
+  $(".modal-title").innerText = title;
+
+  $classDel($(".modal-head"), "modal-error");
+  $classToggle($(".modal-wrapper"), "open");
+}
+
+function $error(html = "", title = "Ошибка") {
+  $(".modal-content").innerHTML = html;
+  $(".modal-title").innerText = title;
+
+  $classAdd($(".modal-head"), "modal-error");
+  $classToggle($(".modal-wrapper"), "open");
 }

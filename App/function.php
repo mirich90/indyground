@@ -21,6 +21,14 @@ function redirect($http = false)
   die;
 }
 
+function getUrl()
+{
+  $http = (!empty($_SERVER['HTTPS'])) ? 'https' : 'http';
+  $host = $_SERVER['HTTP_HOST'];
+  $url = "$http://$host";
+  return $url;
+}
+
 function isShield()
 {
   $ip_lists = ["109.95.79.147", "127.0.0.1", "95.10.1.246"];
@@ -114,6 +122,20 @@ function translitSrc($str)
   $date = date('Ymd_His_');
   $src = $date . $random . "_$image_name";
   return $src;
+}
+
+function randomCode($len)
+{
+  $code = "";
+  $char = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  $pos = strlen($char);
+  $pos = pow($pos, $len);
+  $total = strlen($char) - 1;
+
+  for ($i = 0; $i < $len; $i++) {
+    $code = $code . $char[rand(0, $total)];
+  }
+  return $code;
 }
 
 function getImagePreview($image, $image_type)
