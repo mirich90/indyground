@@ -31,6 +31,7 @@ $this->setCss('navbar');
                 <a href="#!" class="y-dropdown-toggle">Создать</a>
                 <ul class="nav-dropdown y-dropdown-menu">
                     <li class="nav-dropdown-item"><a href="/createPost">Статьи</a></li>
+                    <li class="nav-dropdown-item"><a href="/shortLink">Короткая ссылка</a></li>
                 </ul>
             </li>
         <? endif; ?>

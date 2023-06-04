@@ -41,6 +41,11 @@ function $change(e, func) {
     $inEl(e).addEventListener("change", func);
   }
 }
+function $blur(e, func) {
+  if ($inEl(e)) {
+    $inEl(e).addEventListener("blur", func);
+  }
+}
 function $keyup(e, func) {
   if ($inEl(e)) {
     $inEl(e).addEventListener("keyup", func);
@@ -73,4 +78,13 @@ function $inEls(s) {
 }
 function $create(tag = "div") {
   return document.createElement(tag);
+}
+function $error(text = "", html = "", title = "") {
+  const content = $(".modal-content");
+
+  content.innerHTML = html;
+  content.innerText = text;
+  $(".modal-title").innerText = title;
+  $classToggle($(".modal-wrapper"), "open");
+  $classAdd($(".modal-head"), "modal-error");
 }
