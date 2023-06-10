@@ -63,7 +63,8 @@ class ShortLinks extends Controller
 
         if ($id) {
             $url = getUrl() . "/l/$short_url";
-            $message = array("status" => "success", "text" => $url);
+            $data = array("id" => $id, "url" => $url);
+            $message = array("status" => "success", "data" => $data);
             echo json_encode($message, JSON_UNESCAPED_UNICODE);
         } else {
             $errors = array("status" => "error", "text" => "Ошибка! Попробуйте позже");

@@ -16,6 +16,13 @@ $blur($id("shortlink-url"), (event) => {
   }
 });
 
+$keydown($id("shortlink-shortcode"), (event) => {
+  const key = event.key;
+  const regexp = /^[a-zA-Z0-9-]/;
+  console.log(!regexp.test(key));
+  if (!regexp.test(key)) event.preventDefault();
+});
+
 $blur($id("shortlink-shortcode"), (event) => {
   const el = event.target;
   const value = el.value;
@@ -68,7 +75,8 @@ $click($id("shortlink-save"), async (event) => {
         document.location.href = "/login";
       } else {
         if (commit.status == "success") {
-          const url = commit.text;
+          const url = commit.data.url;
+          const id = commit.data.id;
           const html = `
           <div>
             <p>Создана короткая ссылка <a href='${url}'>${url}</a></p>
@@ -76,7 +84,7 @@ $click($id("shortlink-save"), async (event) => {
             <p>QR-код для этой ссылки:</p>
             <div id='qrcode'></div>
             <br>
-            <p>Все созданные вами ссылки можно посмотреть или исправить на <a href='/shortlinks'>этой странице</a></p>
+            <p>Все созданные вами ссылки можно посмотреть или исправить на <a href='/shortlinks?id=${id}'>этой странице</a></p>
           </div>
           `;
           $setContentMessage(html);
