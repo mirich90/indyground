@@ -17,17 +17,17 @@ $blur($id("shortlink-url"), (event) => {
 });
 
 $keydown($id("shortlink-shortcode"), (event) => {
-  const key = event.key;
   const regexp = /^[a-zA-Z0-9-]/;
-  console.log(!regexp.test(key));
-  if (!regexp.test(key)) event.preventDefault();
+  $classDel($id("shortlink-shortcode"), "error");
+  if (!regexp.test(event.key)) {
+    event.preventDefault();
+  }
 });
 
 $blur($id("shortlink-shortcode"), (event) => {
   const el = event.target;
   const value = el.value;
   const regexp = /^[a-zA-Z0-9-][a-zA-Z0-9-]{3,}$/;
-  console.log(value, !regexp.test(value));
 
   if (value === "") return;
 
@@ -36,6 +36,47 @@ $blur($id("shortlink-shortcode"), (event) => {
       "<p>Длина желаемого короткого адреса от 4 символов включительно. Только английские буквы, цифры и знак '-' (разделитель)</p>"
     );
   }
+});
+
+$click($(".shortlink-shortcode-btn"), async (event) => {
+  let h = new Headers();
+  let fd = new FormData();
+
+  let shortcode = $id("shortlink-shortcode");
+
+  if (shortcode.value === "") {
+    $error("Заполните короткий адрес или оставьте его пустым");
+    return;
+  }
+
+  fd.append("check", shortcode.value);
+
+  let req = new Request(`/shortlinks`, {
+    method: "POST",
+    cache: "no-cache",
+    body: fd,
+  });
+
+  await fetch(req)
+    .then((res) => res.json())
+    // .then((res) => res.text())
+    .then((commit) => {
+      console.log("commit:", +commit.data === 0);
+      if (commit.user == 0) {
+        document.location.href = "/login";
+      } else {
+        if (+commit.data === 0) {
+          $classDel(shortcode, "error");
+          $message("Введенный короткий адрес свободен");
+        } else {
+          $classAdd(shortcode, "error");
+          $error("Введенный короткий адрес уже существует. Придумайте другой");
+        }
+      }
+    })
+    .catch((err) => {
+      console.log("ERROR:", err.message);
+    });
 });
 
 $click($id("shortlink-save"), async (event) => {

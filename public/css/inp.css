@@ -37,6 +37,11 @@
   width: 100%;
 }
 
+.input.error,
+.select.error,
+.textarea.error {
+  border-color: var(--color-danger);
+}
 /* .row-input .wrapper-input + .wrapper-input {
   margin-left: 1rem;
 }

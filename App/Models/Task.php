@@ -20,7 +20,7 @@ class Task extends Model
     'worker_id' => 0,
   ];
 
-  public function findAllByAuthor($author)
+  public function findAllByAuthor($author_id, $author = 'author')
   {
     $table = static::TABLE;
 
@@ -35,7 +35,7 @@ class Task extends Model
 
     $data = $this->pdo->query(
       $sql,
-      [':author' => $author],
+      [':author' => $author_id],
       static::class,
       true
     );

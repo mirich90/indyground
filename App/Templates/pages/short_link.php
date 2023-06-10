@@ -46,5 +46,25 @@ $this->setJs('shortLink');
             </div>
 
         </div>
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Ссылка</th>
+                    <th>Короткая ссылка</th>
+                </tr>
+            </thead>
+            <tbody>
+                <? foreach ($this->shortlinks as $shortlink) : ?>
+                    <tr>
+                        <td><?= $shortlink["title"] ?></td>
+                        <td><?= $shortlink["original_url"] ?></td>
+                        <td><?= $shortlink["short_url"] ?></td>
+                    </tr>
+                <? endforeach ?>
+            </tbody>
+        </table>
     </div>
 </div>

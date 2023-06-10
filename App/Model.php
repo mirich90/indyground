@@ -85,33 +85,33 @@ abstract class Model
         );
     }
 
-    public function countBy($where)
+    public function countBy($field, $value)
     {
         $table = static::TABLE;
-        $sql = "SELECT COUNT(*) as `count` FROM $table WHERE $where";
+        $sql = "SELECT COUNT(*) as `count` FROM $table WHERE $field = :v";
         return $this->pdo->query(
             $sql,
-            [],
+            [':v' => $value],
             static::class,
             true
         )[0]['count'];
     }
 
-    public function findAllBy($where)
+    public function findAllBy($field, $value)
     {
         $table = static::TABLE;
-        $sql = "SELECT * FROM $table WHERE $where ORDER BY id DESC";
+        $sql = "SELECT * FROM $table WHERE $field = :v ORDER BY id DESC";
         return $this->pdo->query(
             $sql,
-            [],
+            [":v" => $value],
             static::class,
             true
         );
     }
 
-    public function findAllByAuthor($id)
+    public function findAllByAuthor($id, $author = 'author')
     {
-        $sql = 'SELECT * FROM ' . static::TABLE . " WHERE author = ? ORDER BY id DESC";
+        $sql = 'SELECT * FROM ' . static::TABLE . " WHERE $author = ? ORDER BY id DESC";
         $data = $this->pdo->query(
             $sql,
             [$id],
@@ -143,10 +143,10 @@ abstract class Model
     {
         $field = $field ?: $this->pk;
         $table = static::TABLE;
-        $sql = "SELECT * FROM $table WHERE $field = ? LIMIT 1";
+        $sql = "SELECT * FROM $table WHERE $field = :id LIMIT 1";
         return $this->pdo->query(
             $sql,
-            [$id],
+            [":id", $id],
             static::class
         );
     }
@@ -155,7 +155,7 @@ abstract class Model
     public function findById($id)
     {
         $table = static::TABLE;
-        
+
         $sql = "SELECT * FROM $table WHERE id=:id
         GROUP BY id ORDER BY id DESC";
 
@@ -220,11 +220,10 @@ abstract class Model
         $data = [];
         $sets = [];
 
-        if ($field_name){
+        if ($field_name) {
             $sets[] = "$field_name = :$field_name";
             $data[":$field_name"] = $fields[$field_name];
             $data[":id"] = $fields['id'];
-
         } else {
             foreach ($fields as $name => $value) {
                 if ('id' != $name) {
@@ -232,12 +231,11 @@ abstract class Model
                 }
                 $data[":$name"] = $value;
             }
-            
         }
-        
+
         $sets = implode(', ', $sets);
         $sql = "UPDATE $table SET $sets, datetime_update=CURRENT_TIMESTAMP, `id` = LAST_INSERT_ID(`id`) WHERE id = :id";
-        
+
         $status = $this->pdo->execute($sql, $data);
 
         return $status;

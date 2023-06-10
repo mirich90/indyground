@@ -37,7 +37,7 @@ class Profile extends Controller
     $Like = new Like;
     $Bookmark = new Bookmark;
     $username = get('username') ?: $_SESSION['user']["username"];
-    $this->view->user_profile = $User_profile->findAllBy("username = '$username'")[0];
+    $this->view->user_profile = $User_profile->findAllBy("username", $username)[0];
     $user_id = $this->view->user_profile["id"];
     $this->view->is_my_profile = ($_SESSION['user']["username"] == $this->view->user_profile['username']);
 
@@ -55,9 +55,9 @@ class Profile extends Controller
     $tag = get("tag");
     $this->view->articles = $article->findAll();
     $this->view->menu_1 = get("menu_1");
-    $this->view->count_articles =  $article->countBy("author = $user_id");
-    $this->view->count_likes =  $Like->countBy("user = $user_id");
-    $this->view->count_bookmark =  $Bookmark->countBy("user = $user_id");
+    $this->view->count_articles =  $article->countBy("author", $user_id);
+    $this->view->count_likes =  $Like->countBy("user", $user_id);
+    $this->view->count_bookmark =  $Bookmark->countBy("user", $user_id);
 
     if ($tag) {
       $this->view->h1 = "с тегом #$tag";

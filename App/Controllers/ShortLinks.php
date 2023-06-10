@@ -6,8 +6,9 @@ use App\Controller;
 use App\Errors;
 
 use App\Models\Shortlink;
+use App\Models\User;
 
-class ShortLinks extends Controller
+class Shortlinks extends Controller
 {
     public function access(): bool
     {
@@ -35,31 +36,58 @@ class ShortLinks extends Controller
             );
             die;
         }
+        if (isset($_POST['check'])) {
+            $this->check(
+                $_POST['check']
+            );
+            die;
+        }
+
+        $Shortlink = new Shortlink;
+        $User = new User;
+        $username = $_SESSION['user']["username"];
+        $this->view->user_profile = $User->findAllBy("username", $username)[0];
+        $user_id = $this->view->user_profile["id"];
+        $this->view->shortlinks = $Shortlink->findAllByAuthor($user_id, 'user_id');
 
         $this->setMeta();
         $this->view->display('short_link');
     }
 
 
+    protected function check($short_url)
+    {
+        $Shortlink = new Shortlink();
+        $check = $Shortlink->countBy("short_url", $short_url);
+
+        // if ($check) {
+        $message = array("status" => "success", "data" => $check);
+        echo json_encode($message, JSON_UNESCAPED_UNICODE);
+        // } else {
+        //     $errors = array("status" => "error", "text" => "Ошибка! Попробуйте позже");
+        //     echo json_encode($errors, JSON_UNESCAPED_UNICODE);
+        // }
+    }
+
     protected function add($title, $original_url, $short_url)
     {
-        $Tag = new Shortlink();
+        $Shortlink = new Shortlink();
         $data = array();
         $data["title"] = $title;
         $data["original_url"] = $original_url;
         $short_url = $this->getShortCode($short_url);
         $data["short_url"] = $short_url;
 
-        $Tag->load($data);
+        $Shortlink->load($data);
 
-        if (!$Tag->validate($data)) {
-            $errors = array("status" => "error", "text" => $Tag->getErrorsValidate());
+        if (!$Shortlink->validate($data)) {
+            $errors = array("status" => "error", "text" => $Shortlink->getErrorsValidate());
             echo json_encode($errors, JSON_UNESCAPED_UNICODE);
             die;
         }
 
-        $Tag->attributes['user_id'] = $_SESSION['user']["id"];
-        $id = $Tag->save();
+        $Shortlink->attributes['user_id'] = $_SESSION['user']["id"];
+        $id = $Shortlink->save();
 
         if ($id) {
             $url = getUrl() . "/l/$short_url";

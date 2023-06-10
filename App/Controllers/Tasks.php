@@ -36,7 +36,7 @@ class Tasks extends Controller
     $Task = new Task;
     $User_profile = new User;
     $username = isset($_GET['username']) ?: $_SESSION['user']["username"];
-    $this->view->user_profile = $User_profile->findAllBy("username = '$username'")[0];
+    $this->view->user_profile = $User_profile->findAllBy("username", $username)[0];
     $user_id = $this->view->user_profile["id"];
     $this->view->tasks = $Task->findAllByAuthor($user_id);
 
