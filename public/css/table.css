@@ -1,0 +1,22 @@
+table {
+  margin: 1em 0;
+  width: 100%;
+  font-family: brandon-grotesque;
+  border-collapse: collapse;
+}
+th {
+  text-align: left;
+  font-family: brandon-grotesque;
+  background: var(--color-primary);
+  color: var(--color-bg);
+  padding: 0.5em;
+  font-weight: 600;
+  border: solid 1px var(--color-text-light);
+}
+tr:nth-child(odd) {
+  background: var(--color-primary-light);
+}
+td {
+  border: solid 1px var(--color-text-light);
+  padding: 0.5em;
+}

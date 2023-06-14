@@ -1,5 +1,6 @@
 <?
 $this->setCss('input');
+$this->setCss('table');
 $this->setCss('short_link');
 $this->setCss('qr_code');
 $this->setJs('qrcode.min');
@@ -48,6 +49,7 @@ $this->setJs('shortLink');
         </div>
 
 
+        <h2> Мои ссылки </h2>
         <table>
             <thead>
                 <tr>
@@ -60,8 +62,18 @@ $this->setJs('shortLink');
                 <? foreach ($this->shortlinks as $shortlink) : ?>
                     <tr>
                         <td><?= $shortlink["title"] ?></td>
-                        <td><?= $shortlink["original_url"] ?></td>
-                        <td><?= $shortlink["short_url"] ?></td>
+
+                        <td>
+                            <a href=" <?= getUrl() . '/l/' . $shortlink["short_url"] ?>">
+                                <?= getUrl() . '/l/' . $shortlink["short_url"] ?>
+                            </a>
+                        </td>
+
+                        <td>
+                            <a href="<?= $shortlink["original_url"] ?>">
+                                <?= $shortlink["original_url"] ?>
+                            </a>
+                        </td>
                     </tr>
                 <? endforeach ?>
             </tbody>

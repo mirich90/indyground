@@ -66,6 +66,13 @@ body {
 nav {
   flex: 0 0 auto;
 }
+/* tbody {
+  vertical-align: baseline;
+}
+th,
+td {
+  padding: 0.5rem;
+} */
 hr {
   background-color: var(--color-neutral2);
   border: 0;

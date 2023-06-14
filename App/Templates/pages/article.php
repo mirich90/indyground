@@ -5,6 +5,7 @@ $this->setJs('add');
 $this->setCss('icon');
 $this->setCss('button');
 $this->setCss('alert');
+$this->setCss('table');
 $this->setCss('article');
 $this->setCss('highlighting');
 ?>
