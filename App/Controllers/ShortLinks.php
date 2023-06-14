@@ -32,6 +32,7 @@ class Shortlinks extends Controller
             $this->add(
                 $_POST['title'],
                 $_POST['url'],
+                $_POST['category'],
                 $_POST['shortcode']
             );
             die;
@@ -54,26 +55,31 @@ class Shortlinks extends Controller
         $this->view->display('short_link');
     }
 
-
     protected function check($short_url)
     {
-        $Shortlink = new Shortlink();
-        $check = $Shortlink->countBy("short_url", $short_url);
-
-        // if ($check) {
+        $check = $this->checkShortLink($short_url);
         $message = array("status" => "success", "data" => $check);
         echo json_encode($message, JSON_UNESCAPED_UNICODE);
-        // } else {
-        //     $errors = array("status" => "error", "text" => "Ошибка! Попробуйте позже");
-        //     echo json_encode($errors, JSON_UNESCAPED_UNICODE);
-        // }
     }
 
-    protected function add($title, $original_url, $short_url)
+    private function checkShortLink($short_url)
     {
+        $Shortlink = new Shortlink();
+        return $Shortlink->countBy("short_url", $short_url);
+    }
+
+    protected function add($title, $original_url, $category, $short_url)
+    {
+        if ($this->checkShortLink($short_url) != 0) {
+            $errors = array("status" => "error", "text" => "Введенный короткий адрес уже существует. Придумайте другой");
+            echo json_encode($errors, JSON_UNESCAPED_UNICODE);
+            die;
+        }
+
         $Shortlink = new Shortlink();
         $data = array();
         $data["title"] = $title;
+        $data["category"] = $category;
         $data["original_url"] = $original_url;
         $short_url = $this->getShortCode($short_url);
         $data["short_url"] = $short_url;

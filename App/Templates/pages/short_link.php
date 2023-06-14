@@ -9,22 +9,30 @@ $this->setJs('shortLink');
 
 <div id="shortlink">
 
-    <div class="container">
+    <div class="container-lg">
         <h1> Создать короткую ссылку </h1>
 
         <div class="shortlink-form">
 
             <?= $this->ui('input', [
                 'id' => 'shortlink-title',
-                'label' => 'Название ссылки (обязательно)',
-                'placeholder' => "Введите название/описание ссылки",
+                'label' => 'Название ссылки',
+                'placeholder' => "Введите название/описание ссылки (обязательно)",
             ]); ?>
+
+            <div class="row-space">
+                <?= $this->ui('input', [
+                    'id' => 'shortlink-category',
+                    'label' => 'Категория',
+                    'placeholder' => "Введите желаемую категорию (необязательно)",
+                ]); ?>
+            </div>
 
             <?= $this->ui('input', [
                 'id' => 'shortlink-url',
-                'label' => 'Ссылка (обязательно)',
+                'label' => 'Ссылка',
                 'type' => 'url',
-                'placeholder' => "Введите ссылку",
+                'placeholder' => "Введите ссылку (обязательно)",
             ]); ?>
 
             <div class="row-space">
@@ -50,33 +58,55 @@ $this->setJs('shortLink');
 
 
         <h2> Мои ссылки </h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Название</th>
-                    <th>Ссылка</th>
-                    <th>Короткая ссылка</th>
-                </tr>
-            </thead>
-            <tbody>
-                <? foreach ($this->shortlinks as $shortlink) : ?>
+        <div class="wrapper-btns">
+            <?= $this->ui('btn', [
+                'text' => 'Красивый дизайн сайта',
+                'id' => 'popup-article-info-edit',
+                'classes' => 'small',
+                'data-src' => ''
+            ]); ?>
+            <?= $this->ui('btn', [
+                'text' => 'Фильмы',
+                'id' => 'popup-article-info-edit',
+                'classes' => 'small',
+                'data-src' => ''
+            ]); ?>
+        </div>
+
+        <? if ($this->shortlinks) : ?>
+            <table>
+                <thead>
                     <tr>
-                        <td><?= $shortlink["title"] ?></td>
-
-                        <td>
-                            <a href=" <?= getUrl() . '/l/' . $shortlink["short_url"] ?>">
-                                <?= getUrl() . '/l/' . $shortlink["short_url"] ?>
-                            </a>
-                        </td>
-
-                        <td>
-                            <a href="<?= $shortlink["original_url"] ?>">
-                                <?= $shortlink["original_url"] ?>
-                            </a>
-                        </td>
+                        <th>Название</th>
+                        <th>Категория</th>
+                        <th>Ссылка</th>
+                        <th>Короткая ссылка</th>
                     </tr>
-                <? endforeach ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <? foreach ($this->shortlinks as $shortlink) : ?>
+                        <tr>
+                            <td><?= $shortlink["title"] ?></td>
+                            <td><?= $shortlink["category"] ?></td>
+
+                            <td>
+                                <a href=" <?= getUrl() . '/l/' . $shortlink["short_url"] ?>">
+                                    <?= getUrl() . '/l/' . $shortlink["short_url"] ?>
+                                </a>
+                            </td>
+
+                            <td>
+                                <a href="<?= $shortlink["original_url"] ?>">
+                                    <?= $shortlink["original_url"] ?>
+                                </a>
+                            </td>
+                        </tr>
+                    <? endforeach ?>
+                </tbody>
+            </table>
+
+        <? else : ?>
+            <p>Ссылок пока нет.</p>
+        <? endif ?>
     </div>
 </div>

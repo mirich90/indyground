@@ -12,7 +12,6 @@ abstract class Model
     protected $pdo;
     public $id;
     public $attributes = [];
-    protected $pk = 'id';
 
     public $errors_validation = [];
     public $rules_validation = [];
@@ -109,6 +108,19 @@ abstract class Model
         );
     }
 
+    public function findOne($value, $field = 'id')
+    {
+        $table = static::TABLE;
+        $sql = "SELECT * FROM $table WHERE $field = :v LIMIT 1";
+        $data = $this->pdo->query(
+            $sql,
+            [":v" => $value],
+            static::class,
+            true
+        );
+        return $data ? $data[0] : null;
+    }
+
     public function findAllByAuthor($id, $author = 'author')
     {
         $sql = 'SELECT * FROM ' . static::TABLE . " WHERE $author = ? ORDER BY id DESC";
@@ -139,34 +151,6 @@ abstract class Model
         );
     }
 
-    public function findOne($id, $field = '')
-    {
-        $field = $field ?: $this->pk;
-        $table = static::TABLE;
-        $sql = "SELECT * FROM $table WHERE $field = :id LIMIT 1";
-        return $this->pdo->query(
-            $sql,
-            [":id", $id],
-            static::class
-        );
-    }
-
-
-    public function findById($id)
-    {
-        $table = static::TABLE;
-
-        $sql = "SELECT * FROM $table WHERE id=:id
-        GROUP BY id ORDER BY id DESC";
-
-        $data = $this->pdo->query(
-            $sql,
-            [':id' => $id],
-            static::class,
-            true
-        );
-        return $data ? $data[0] : null;
-    }
 
     public function find($fields, $value, $operator = 'AND')
     {

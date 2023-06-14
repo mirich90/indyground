@@ -12,22 +12,19 @@ $ctrl = $parts[1] ? $parts[1] : 'Index';
 $ctrl = ucfirst($ctrl);
 
 try {
-
   $file = __DIR__ . "/../App/Controllers/$ctrl.php";
+  $class = '\App\Controllers\NotFound';
+
   if (file_exists($file)) {
     $class = "\App\Controllers\\$ctrl";
-  } else {
-    $class = '\App\Controllers\NotFound';
   }
 
   $ctrl = new $class;
   $ctrl();
 } catch (\App\DbException $error) {
-
   echo 'Ошибка в БД: ' . $error->getMessage();
   die;
 } catch (\App\Errors $errors) {
-
   foreach ($errors->all() as $error) {
     echo 'Ошибка: ' . $error->getMessage();
     echo '<br />';

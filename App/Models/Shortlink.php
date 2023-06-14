@@ -10,6 +10,7 @@ class Shortlink extends Model
 
     public $attributes = [
         'title' => '',
+        'category' => '',
         'original_url' => '',
         'short_url' => '',
     ];

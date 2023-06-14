@@ -6,7 +6,7 @@ $blur($id("shortlink-url"), (event) => {
   if (value.length < 13) {
     $error("Длина ссылки должна быть не менее 13 символов");
   }
-  if (!value.startsWith("https://") && !value.startsWith("https://")) {
+  if (!value.startsWith("https://") && !value.startsWith("http://")) {
     $error(
       'Первые символы поля всегда должны начинаться с "https://" или "http://"'
     );
@@ -59,7 +59,6 @@ $click($(".shortlink-shortcode-btn"), async (event) => {
 
   await fetch(req)
     .then((res) => res.json())
-    // .then((res) => res.text())
     .then((commit) => {
       console.log("commit:", +commit.data === 0);
       if (commit.user == 0) {
@@ -86,6 +85,7 @@ $click($id("shortlink-save"), async (event) => {
   let title = $id("shortlink-title");
   let url = $id("shortlink-url");
   let shortcode = $id("shortlink-shortcode");
+  let category = $id("shortlink-category");
 
   if (title.value === "" || url.value === "") {
     $error("Поля 'Название ссылки' и 'Ссылка' не должны быть пустыми");
@@ -95,11 +95,8 @@ $click($id("shortlink-save"), async (event) => {
   fd.append("title", title.value);
   fd.append("url", url.value);
   fd.append("shortcode", shortcode.value);
+  fd.append("category", category.value);
   fd.append("add", "true");
-
-  title.value = "";
-  url.value = "";
-  shortcode.value = "";
 
   let req = new Request(`/shortlinks`, {
     method: "POST",
@@ -109,18 +106,17 @@ $click($id("shortlink-save"), async (event) => {
 
   await fetch(req)
     .then((res) => res.json())
-    // .then((res) => res.text())
     .then((commit) => {
       console.log("commit:", commit);
       if (commit.user == 0) {
         document.location.href = "/login";
       } else {
         if (commit.status == "success") {
-          const url = commit.data.url;
+          const data_url = commit.data.url;
           const id = commit.data.id;
           const html = `
           <div>
-            <p>Создана короткая ссылка <a href='${url}'>${url}</a></p>
+            <p>Создана короткая ссылка <a href='${data_url}'>${data_url}</a></p>
             <br>
             <p>QR-код для этой ссылки:</p>
             <div id='qrcode'></div>
@@ -132,8 +128,12 @@ $click($id("shortlink-save"), async (event) => {
 
           const qrcode = new QRCode("qrcode");
           qrcode.clear();
-          qrcode.makeCode(url);
+          qrcode.makeCode(data_url);
 
+          title.value = "";
+          url.value = "";
+          shortcode.value = "";
+          category.value = "";
           $showMessage(commit.text);
         } else {
           $error(commit.text);
