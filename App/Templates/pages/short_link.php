@@ -14,11 +14,11 @@ $this->setJs('shortLink');
             <a class="modal-btn-close modal-trigger"></a>
         </div>
 
-        <div id="category-form">
+        <div class="modal-content">
 
             <div class="row-space">
                 <?= $this->ui('input', [
-                    'id' => 'shortlink-category_name',
+                    'id' => 'shortlink-category-name',
                     'placeholder' => "Введите название категории",
                 ]); ?>
 
@@ -111,7 +111,7 @@ $this->setJs('shortLink');
                     <? foreach ($this->shortlinks as $shortlink) : ?>
                         <tr>
                             <td><?= $shortlink["title"] ?></td>
-                            <td><?= $shortlink["category"] ?></td>
+                            <td><?= $shortlink["category_id"] ?></td>
 
                             <td>
                                 <a href=" <?= getUrl() . '/l/' . $shortlink["short_url"] ?>">

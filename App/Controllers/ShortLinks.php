@@ -44,6 +44,12 @@ class Shortlinks extends Controller
             );
             die;
         }
+        if (isset($_POST['add-category'])) {
+            $this->addCategory(
+                $_POST['name']
+            );
+            die;
+        }
 
         $Shortlink = new Shortlink;
         $User = new User;
@@ -71,6 +77,45 @@ class Shortlinks extends Controller
     {
         $Shortlink = new Shortlink();
         return $Shortlink->countBy("short_url", $short_url);
+    }
+
+    private function checkCategory($name)
+    {
+        $ShortlinkCategory = new ShortlinkCategory();
+        return $ShortlinkCategory->countBy("name", $name);
+    }
+
+    protected function addCategory($name)
+    {
+        if ($this->checkCategory($name) != 0) {
+            $errors = array("status" => "error", "text" => "Категория уже существует");
+            echo json_encode($errors, JSON_UNESCAPED_UNICODE);
+            die;
+        }
+
+        $ShortlinkCategory = new ShortlinkCategory();
+        $data = array();
+        $data["name"] = $name;
+
+        $ShortlinkCategory->load($data);
+
+        if (!$ShortlinkCategory->validate($data)) {
+            $errors = array("status" => "error", "text" => $ShortlinkCategory->getErrorsValidate());
+            echo json_encode($errors, JSON_UNESCAPED_UNICODE);
+            die;
+        }
+
+        $ShortlinkCategory->attributes['user_id'] = $_SESSION['user']["id"];
+        $id = $ShortlinkCategory->save();
+
+        if ($id) {
+            $text = "Категория '$name' создана";
+            $message = array("status" => "success", "text" => $text);
+            echo json_encode($message, JSON_UNESCAPED_UNICODE);
+        } else {
+            $errors = array("status" => "error", "text" => "Ошибка! Попробуйте позже");
+            echo json_encode($errors, JSON_UNESCAPED_UNICODE);
+        }
     }
 
     protected function add($title, $original_url, $category, $short_url)

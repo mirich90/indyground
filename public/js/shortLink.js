@@ -42,6 +42,46 @@ $click($(".shortlink-category-new"), (event) => {
   $classAdd($id("category-new"), "open");
 });
 
+$click($(".shortlink-category-create"), async (event) => {
+  let h = new Headers();
+  let fd = new FormData();
+
+  let name = $id("shortlink-category-name");
+
+  if (name.value === "") {
+    $error("Введите назвние категории");
+    return;
+  }
+
+  fd.append("name", name.value);
+  fd.append("add-category", "true");
+
+  let req = new Request(`/shortlinks`, {
+    method: "POST",
+    cache: "no-cache",
+    body: fd,
+  });
+
+  await fetch(req)
+    .then((res) => res.json())
+    .then((commit) => {
+      console.log("commit:", commit);
+      if (commit.user == 0) {
+        document.location.href = "/login";
+      } else {
+        if (commit.status == "success") {
+          name.value = "";
+          $message(commit.text);
+        } else {
+          $error(commit.text);
+        }
+      }
+    })
+    .catch((err) => {
+      console.log("ERROR:", err.message);
+    });
+});
+
 $click($(".shortlink-shortcode-btn"), async (event) => {
   let h = new Headers();
   let fd = new FormData();
