@@ -94,6 +94,18 @@ function ss($name, $field, $h = false)
   }
 }
 
+function parseCategories($categories)
+{
+  $results = array();
+  foreach ($categories as $category) {
+    $results[] = [
+      'value' => $category['id'],
+      'text' => $category['name'],
+    ];
+  }
+  return $results;
+}
+
 function translit($value)
 {
   $converter = array(

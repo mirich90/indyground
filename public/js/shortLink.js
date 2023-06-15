@@ -38,6 +38,10 @@ $blur($id("shortlink-shortcode"), (event) => {
   }
 });
 
+$click($(".shortlink-category-new"), (event) => {
+  $classAdd($id("category-new"), "open");
+});
+
 $click($(".shortlink-shortcode-btn"), async (event) => {
   let h = new Headers();
   let fd = new FormData();

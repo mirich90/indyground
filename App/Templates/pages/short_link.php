@@ -7,8 +7,28 @@ $this->setJs('qrcode.min');
 $this->setJs('shortLink');
 ?>
 
-<div id="shortlink">
+<div id="category-new" class="modal-wrapper">
+    <div class="modal container">
+        <div class="modal-head">
+            <p class="modal-title">Создать новую категорию</p>
+            <a class="modal-btn-close modal-trigger"></a>
+        </div>
 
+        <div id="category-form">
+
+            <div class="row-space">
+                <?= $this->ui('input', [
+                    'id' => 'shortlink-category_name',
+                    'placeholder' => "Введите название категории",
+                ]); ?>
+
+                <?= $this->ui('btn', ['text' => 'Создать', 'classes' => 'shortlink-category-create']) ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="shortlink">
     <div class="container-lg">
         <h1> Создать короткую ссылку </h1>
 
@@ -21,12 +41,16 @@ $this->setJs('shortLink');
             ]); ?>
 
             <div class="row-space">
-                <?= $this->ui('input', [
+                <?= $this->ui('select', [
                     'id' => 'shortlink-category',
-                    'label' => 'Категория',
+                    'label' => "Категория",
                     'placeholder' => "Введите желаемую категорию (необязательно)",
+                    'options' => $this->shortlink_categories,
                 ]); ?>
+
+                <?= $this->ui('btn', ['text' => 'Создать', 'classes' => 'shortlink-category-new']) ?>
             </div>
+
 
             <?= $this->ui('input', [
                 'id' => 'shortlink-url',

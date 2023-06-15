@@ -6,6 +6,7 @@ use App\Controller;
 use App\Errors;
 
 use App\Models\Shortlink;
+use App\Models\ShortlinkCategory;
 use App\Models\User;
 
 class Shortlinks extends Controller
@@ -46,10 +47,14 @@ class Shortlinks extends Controller
 
         $Shortlink = new Shortlink;
         $User = new User;
+        $ShortlinkCategory = new ShortlinkCategory;
         $username = $_SESSION['user']["username"];
         $this->view->user_profile = $User->findAllBy("username", $username)[0];
         $user_id = $this->view->user_profile["id"];
         $this->view->shortlinks = $Shortlink->findAllByAuthor($user_id, 'user_id');
+        $this->view->shortlink_categories = parseCategories(
+            $ShortlinkCategory->findAllBy('user_id', $user_id)
+        );
 
         $this->setMeta();
         $this->view->display('short_link');
