@@ -33,7 +33,7 @@ class Shortlinks extends Controller
             $this->add(
                 $_POST['title'],
                 $_POST['url'],
-                $_POST['category'],
+                $_POST['category_id'],
                 $_POST['shortcode']
             );
             die;
@@ -118,7 +118,7 @@ class Shortlinks extends Controller
         }
     }
 
-    protected function add($title, $original_url, $category, $short_url)
+    protected function add($title, $original_url, $category_id, $short_url)
     {
         if ($this->checkShortLink($short_url) != 0) {
             $errors = array("status" => "error", "text" => "Введенный короткий адрес уже существует. Придумайте другой");
@@ -129,7 +129,7 @@ class Shortlinks extends Controller
         $Shortlink = new Shortlink();
         $data = array();
         $data["title"] = $title;
-        $data["category"] = $category;
+        $data["category_id"] = $category_id;
         $data["original_url"] = $original_url;
         $short_url = $this->getShortCode($short_url);
         $data["short_url"] = $short_url;

@@ -139,7 +139,7 @@ $click($id("shortlink-save"), async (event) => {
   fd.append("title", title.value);
   fd.append("url", url.value);
   fd.append("shortcode", shortcode.value);
-  fd.append("category", category.value);
+  fd.append("category_id", category.value);
   fd.append("add", "true");
 
   let req = new Request(`/shortlinks`, {
