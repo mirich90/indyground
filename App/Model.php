@@ -72,6 +72,18 @@ abstract class Model
         return $this->pdo->execute($sql);
     }
 
+    public function select($fields = '*')
+    {
+        $table = static::TABLE;
+        $sql = "SELECT $fields FROM $table";
+        return $this->pdo->query(
+            $sql,
+            [':table' => $table, ':fields' => $fields],
+            static::class,
+            true
+        );
+    }
+
     public function findAll($sort = 'DESC')
     {
         $table = static::TABLE;

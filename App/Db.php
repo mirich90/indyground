@@ -35,17 +35,13 @@ class Db
 
     public function execute($sql, $data = [])
     {
-        self::$countSql++;
-        self::$queries[] = $sql;
-        $sth = $this->dbh->prepare($sql);
+        $sth = $this->sth($sql);
         return $sth->execute($data);
     }
 
     public function query($sql, $data = [], $class, $assocc = false)
     {
-        self::$countSql++;
-        self::$queries[] = $sql;
-        $sth = $this->dbh->prepare($sql);
+        $sth = $this->sth($sql);
         $res = $sth->execute($data);
         if (false === $res) {
             throw new DbException("Запрос '$sql' не может быть выполнен");
@@ -55,6 +51,13 @@ class Db
         } else {
             return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
         }
+    }
+
+    public function sth($sql)
+    {
+        self::$countSql++;
+        self::$queries[] = $sql;
+        return $this->dbh->prepare($sql);
     }
 
     public function getLastId()
