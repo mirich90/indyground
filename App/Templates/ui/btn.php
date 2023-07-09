@@ -8,7 +8,7 @@ $tmp = [
     'classes' =>  getUi($ui, 'classes'),
     'data-id' => (isset($ui['data-id'])) ? "data-id = {$ui['data-id']}" : '',
     'data-src' => (isset($ui['data-src'])) ? "'data-src = {$ui['data-src']}" : '',
-    'src' => (isset($ui['src'])) ? "'href = {$ui['src']}" : '',
+    'src' => (isset($ui['src'])) ? "href = {$ui['src']}" : '',
 ];
 ?>
 

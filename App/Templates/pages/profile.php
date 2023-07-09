@@ -75,6 +75,9 @@
 
 <main class="profile__main">
 
+  <? $this->Component('recent'); ?>
+
+
   <? if ($this->menu_1 === "created" || !$this->menu_1) : ?>
 
     <nav class="container-lg" aria-label='nav'>
