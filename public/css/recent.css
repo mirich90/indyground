@@ -62,7 +62,7 @@
 }
 .timeline__item-link,
 .timeline__item-link:visited {
-  color: var(--primary);
+  color: var(--color-primary);
 }
 .timeline__item-link {
   transition: color var(--trans-dur);
@@ -70,12 +70,12 @@
 .timeline__item-link:hover {
   text-decoration: underline;
 }
-.timeline__item-pub,
+.timeline__item-pub {
+  font-size: 0.9rem;
+}
 .timeline__item-time {
   font-size: 0.833em;
   line-height: 1.8;
-}
-.timeline__item-time {
   font-weight: bold;
 }
 .timeline__loading {
@@ -96,8 +96,8 @@
 /* Beyond mobile */
 @media (min-width: 768px) {
   .timeline .timeline__items {
-    margin-left: 12em;
-    width: 27em;
+    margin-left: 30%;
+    width: 70%;
   }
   .timeline__item-time {
     position: absolute;

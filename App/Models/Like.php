@@ -13,7 +13,8 @@ class Like extends Model
     'article_id' => '',
   ];
 
-  public function getCount(){
+  public function getCount()
+  {
     $table = static::TABLE;
     $name_table = $this->attributes["name_table"];
     $article_id = $this->attributes["article_id"];
@@ -25,11 +26,10 @@ class Like extends Model
       WHERE article_id=:article_id and name_table=:name_table and `state`=1";
 
     return $this->pdo->query(
-        $sql,
-        [':name_table' => $name_table, ':article_id' => $article_id, ':user' => $user],
-        static::class
+      $sql,
+      [':name_table' => $name_table, ':article_id' => $article_id, ':user' => $user],
+      static::class
     );
-    
   }
 
   public function add()
@@ -40,7 +40,7 @@ class Like extends Model
     $user = $this->attributes["user"];
 
     $sql = "INSERT INTO $table
-      SET name_table=:name_table, user=:user, article_id=:article_id, `state`=1 
+      SET name_table=:name_table, user=:user, article_id=:article_id, state=1 
       ON DUPLICATE KEY UPDATE `state` = not `state`, datetime=CURRENT_TIMESTAMP";
 
     $this->pdo->execute(

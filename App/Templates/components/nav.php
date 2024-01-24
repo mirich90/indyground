@@ -74,7 +74,7 @@ $this->setCss('navbar');
                         <!-- <li class="nav-dropdown-item"><a href="/comments">Комментарии</a></li> -->
                         <li class="nav-dropdown-item"><a href="/profile/?username=<?= $this->user['username'] ?>&menu_1=bookmarks&bookmarks=true">Закладки</a></li>
                         <li class="nav-dropdown-item"><a href="/profile/?username=<?= $this->user['username'] ?>&menu_1=likes&likes=true">Любимое</a></li>
-                        <li class="nav-dropdown-item"><a href="settings">Настройки</a></li>
+                        <!-- <li class="nav-dropdown-item"><a href="settings">Настройки</a></li> -->
                         <li class="nav-dropdown-item"><a href="/logout">Выйти</a></li>
                     </ul>
 

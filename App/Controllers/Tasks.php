@@ -12,6 +12,22 @@ class Tasks extends Controller
 {
   public function access(): bool
   {
+    if (!isShield()) {
+      redirect('/NotFound');
+      die;
+    }
+
+    if (!isLogin()) {
+      $_SESSION['error'] = "Зарегистрируйтесь, чтобы добавлять задачи!";
+      redirect('/login');
+      die;
+    }
+
+    if (!isRole('moderator') && !isRole('admin')) {
+      $_SESSION['error'] = "Пока только модераторы или админы могут добавлять задачи!";
+      redirect('/NotFound');
+      die;
+    }
     if (!empty($_POST["edit"])) {
       $this->edit($_POST);
       die;

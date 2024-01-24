@@ -9,8 +9,8 @@ $tmp = [
 ];
 ?>
 
-<figure>
-    <img src="<?= $tmp['src'] ?>" alt=" <?= $tmp['name'] ?>" class="ui-image <?= $tmp['classes'] ?>">
+<figure class="ui-image <?= $tmp['classes'] ?>">
+    <img src=" <?= $tmp['src'] ?>" alt=" <?= $tmp['name'] ?>">
     <? if ($tmp['descr']) : ?>
         <figcaption>
             <?= $tmp['name'] ?>
