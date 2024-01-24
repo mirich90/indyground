@@ -16,7 +16,6 @@ node_modules
 
 # production
 /build
-.App/config.php
 
 # misc
 .DS_Store
@@ -38,3 +37,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 cg28577_test3.7z
+App/config.php
